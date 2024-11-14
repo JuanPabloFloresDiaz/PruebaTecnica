@@ -69,14 +69,16 @@ class UsuariosHandler
     //Función para actualizar un usuario.
     public function updateRow()
     {
-        $sql = 'CALL actualizar_usuario(?,?,?,?,?,?);';
+        $sql = 'CALL actualizar_usuario(?,?,?,?,?,?,?,?);';
         $params = array(
             $this->id,
             $this->nombre,
             $this->correo,
             $this->telefono,
             $this->dui,
+            $this->direccion,
             $this->nacimiento,
+            $this->estado
         );
         return Database::executeRow($sql, $params);
     }
@@ -95,23 +97,5 @@ class UsuariosHandler
         $sql = 'CALL actualizar_estado_usuario(?);';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
-    }
-
-    //Función para chequear si el DUI o el CORREO estan duplicados.
-    public function checkDuplicate($value)
-    {
-        if ($this->id) {
-            $sql = 'SELECT ID
-            FROM vista_tabla_usuarios
-            WHERE DUI = ? OR CORREO = ? AND ID != ?';
-            $params = array($value, $value, $this->id);
-            return Database::getRow($sql, $params);
-        } else {
-            $sql = 'SELECT ID
-            FROM vista_tabla_usuarios
-            WHERE DUI = ? OR CORREO = ?';
-            $params = array($value, $value);
-            return Database::getRow($sql, $params);
-        }
     }
 }

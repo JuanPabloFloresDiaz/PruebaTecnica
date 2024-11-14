@@ -109,13 +109,18 @@ class Database
                 self::$error = 'Columna no encontrada';
                 break;
             case '45000':
-                self::$error = 'El formato del correo electronico no es valido';
-                break;
-            case '45001':
-                self::$error = 'El correo electronico introducido ya existe';
-                break;
-            case '45002':
-                self::$error = 'El dui introducido ya existe';
+                // Manejo de errores de validación para correo, DUI o nombre de usuario duplicado
+                if (strpos($message, 'Correo electrónico ya existe') !== false) {
+                    self::$error = 'El correo electrónico introducido ya existe';
+                } elseif (strpos($message, 'DUI ya existe') !== false) {
+                    self::$error = 'El DUI introducido ya existe';
+                } elseif (strpos($message, 'Nombre de usuario ya existe') !== false) {
+                    self::$error = 'El nombre de usuario introducido ya existe';
+                } elseif (strpos($message, 'El usuario no existe') !== false) {
+                    self::$error = 'El usuario que se quiere eliminar no existe';
+                } else {
+                    self::$error = 'El formato del correo electrónico no es válido';
+                }
                 break;
             case '23000':
                 // Revisa si el mensaje de error corresponde a una entrada duplicada.

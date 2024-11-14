@@ -59,9 +59,9 @@ class UsuariosData extends UsuariosHandler
     }
 
     // Validación y asignación de laW clave del usuario.
-    public function setClave($value, $name, $lastname, $birthday, $phone, $email)
+    public function setClave($value, $name, $birthday, $phone, $email)
     {
-        if (Validator::validatePassword($value, $name, $lastname, $birthday, $phone, $email)) {
+        if (Validator::validatePassword($value, $name, $birthday, $phone, $email)) {
             $this->clave = password_hash($value, PASSWORD_DEFAULT);
             return true;
         } else {
@@ -125,10 +125,11 @@ class UsuariosData extends UsuariosHandler
     // Validación y asignación del estado del usuario.
     public function setEstado($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateBoolean($value)) {
             $this->estado = $value;
             return true;
         } else {
+            $this->data_error = 'El estado debe ser 1 o 0';
             return false;
         }
     }
