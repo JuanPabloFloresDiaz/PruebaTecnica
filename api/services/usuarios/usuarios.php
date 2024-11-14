@@ -88,7 +88,7 @@ if (isset($_GET['action'])) {
                 !$usuario->setDUI($_POST[POST_DUI]) or
                 !$usuario->setDireccion($_POST[POST_DIRECCION]) or
                 !$usuario->setNacimiento($_POST[POST_NACIMIENTO]) or 
-                !$usuario->setEstado($_POST[POST_ESTADO]) 
+                !$usuario->setEstado(isset($_POST[POST_ESTADO]) ? 1 : 0) 
             ) {
                 // Si algún campo es inválido, se obtiene el mensaje de error y se devuelve.
                 $result['error'] = $usuario->getDataError();
