@@ -22,7 +22,7 @@ Crea una base de datos llamada db_prueba_tecnica y asegúrate de que la configur
 
 3. **Configuración de la base de datos**
 Se debe importar el esquema de la base de datos desde el archivo SQL correspondiente.
-https://github.com/JuanPabloFloresDiaz/BDPruebaTecnica.git
+[<url_del_repositorio>](https://github.com/JuanPabloFloresDiaz/BDPruebaTecnica.git)
 
 ### Uso de la API
 La API es accesible a través de las siguientes rutas:
