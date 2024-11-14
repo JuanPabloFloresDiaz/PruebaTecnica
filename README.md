@@ -13,7 +13,8 @@ Este repositorio alberga la prueba técnica solicitada para el puesto de **Desar
 ### Instalación
 
 1. **Clonar el repositorio:**
-
+   Clona el proyecto dentro de la carpeta `htdocs` de tu instalación de XAMPP, puedes ejecutar los siguientes comandos en tu terminal de visual studio code, o en tu terminal de windows:
+   cd C:\xampp\htdocs
    git clone [<url_del_repositorio>](https://github.com/JuanPabloFloresDiaz/PruebaTecnica.git)
 2. **Configurar la base de datos:**
 
