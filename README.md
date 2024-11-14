@@ -37,7 +37,7 @@ Donde [acción] es la acción que deseas ejecutar (por ejemplo, createRow, updat
 ### Métodos disponibles
 A continuación se describen los diferentes métodos disponibles en la API, junto con ejemplos de cómo hacer las peticiones:
 
-**Buscar registros de usuario (searchRows)**
+#### **Buscar registros de usuario (searchRows)**
 ***Método:*** POST
 
 ***Descripción:*** Permite buscar registros de usuarios basados en un término de búsqueda.
@@ -81,7 +81,7 @@ http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=searchR
     "exception": null
 }
 
-**Crear un nuevo usuario (createRow)**
+#### **Crear un nuevo usuario (createRow)**
 ***Método:*** POST
 
 ***Descripción:*** Crea un nuevo registro de usuario.
@@ -120,7 +120,7 @@ Respuesta:
     "exception": "El correo electrónico introducido ya existe"
 }
 
-**Actualizar datos de un usuario (updateRow)**
+#### **Actualizar datos de un usuario (updateRow)**
 ***Método:*** POST
 
 ***Descripción:*** Actualiza un registro de usuario existente.
@@ -161,7 +161,7 @@ Respuesta:
 }
 
 
-**Obtener todos los usuarios (readAll)**
+#### **Obtener todos los usuarios (readAll)**
 ***Método:*** GET
 
 ***Descripción:*** Obtiene todos los usuarios registrados.
@@ -229,7 +229,7 @@ http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=readAll
     "exception": null
 }
 
-**Obtener un usuario por ID (readOne)**
+#### **Obtener un usuario por ID (readOne)**
 ***Método:*** POST
 
 ***Descripción:*** Obtiene los detalles de un usuario específico por su ID.
@@ -272,7 +272,7 @@ http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=readOne
     "exception": null
 }
 
-**Eliminar un usuario (deleteRow)**
+#### **Eliminar un usuario (deleteRow)**
 ***Método:*** POST
 
 ***Descripción:*** Elimina un usuario específico.
@@ -304,7 +304,7 @@ http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=deleteR
     "exception": "El usuario no existe"
 }
 
-**Cambiar estado de un usuario (changeState)**
+#### **Cambiar estado de un usuario (changeState)**
 ***Método:*** POST
 
 ***Descripción:*** Cambia el estado (activo/inactivo) de un usuario.
