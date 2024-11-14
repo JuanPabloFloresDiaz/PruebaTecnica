@@ -71,7 +71,7 @@ if (isset($_GET['action'])) {
                 $result['message'] = 'Usuario creado correctamente';
             } else {
                 // Si ocurre un problema durante la creación, se devuelve un error.
-                $result['error'] = 'Ocurrió un problema al crear el Usuario';
+                $result['error'] = 'Ocurrió un problema al crear el usuario';
             }
             break;
             // Actualizar
@@ -87,7 +87,8 @@ if (isset($_GET['action'])) {
                 !$usuario->setTelefono($_POST[POST_TELEFONO]) or
                 !$usuario->setDUI($_POST[POST_DUI]) or
                 !$usuario->setDireccion($_POST[POST_DIRECCION]) or
-                !$usuario->setNacimiento($_POST[POST_NACIMIENTO])
+                !$usuario->setNacimiento($_POST[POST_NACIMIENTO]) or 
+                !$usuario->setEstado($_POST[POST_ESTADO]) 
             ) {
                 // Si algún campo es inválido, se obtiene el mensaje de error y se devuelve.
                 $result['error'] = $usuario->getDataError();
@@ -97,7 +98,7 @@ if (isset($_GET['action'])) {
                 $result['message'] = 'Usuario modificado correctamente';
             } else {
                 // Si ocurre un problema durante la actualización, se devuelve un error.
-                $result['error'] = 'Ocurrió un problema al modificar el Usuario';
+                $result['error'] = 'Ocurrió un problema al modificar el usuario';
             }
             break;
             // Ver todos
@@ -109,7 +110,7 @@ if (isset($_GET['action'])) {
                 $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
             } else {
                 // Si no hay registros, se devuelve un mensaje de error.
-                $result['error'] = 'No existen Usuarios registrados';
+                $result['error'] = 'No existen usuarios registrados';
             }
             break;
             // Ver uno
@@ -139,7 +140,7 @@ if (isset($_GET['action'])) {
                 $result['message'] = 'Usuario eliminado correctamente';
             } else {
                 // Si ocurre un problema durante la eliminación, se devuelve un error.
-                $result['error'] = 'Ocurrió un problema al eliminar el Usuario';
+                $result['error'] = 'Ocurrió un problema al eliminar el usuario';
             }
             break;
             // Cambiar estado
@@ -156,7 +157,7 @@ if (isset($_GET['action'])) {
                 $result['message'] = 'Estado del usuario cambiado correctamente';
             } else {
                 // Si ocurre un problema durante el cambio de estado, se devuelve un error.
-                $result['error'] = 'Ocurrió un problema al alterar el estado del Usuario';
+                $result['error'] = 'Ocurrió un problema al alterar el estado del usuario';
             }
             break;
             // Acción no disponible

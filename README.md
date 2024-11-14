@@ -17,7 +17,8 @@ Este repositorio alberga la prueba técnica solicitada para el puesto de **Desar
    git clone [<url_del_repositorio>](https://github.com/JuanPabloFloresDiaz/PruebaTecnica.git)
 2. **Configurar la base de datos:**
 
-Crea una base de datos llamada db_prueba_tecnica y asegúrate de que la configuración de la base de datos en el archivo config.php sea la correcta, asegurate de tener las credenciales del archivo .env, en caso no tener estas, puede solicitarlas, o usar las credenciales predeterminadas para la configuración local, (SERVER=localhost, DATABASE=db_prueba_tecnica, USERNAME=root, PASSWORD=).
+Crea una base de datos llamada db_prueba_tecnica y asegúrate de que la configuración de la base de datos en el archivo config.php del proyecto sea la correcta, asegurate de tener las credenciales del archivo .env, en caso no tener estas, puede solicitarlas, o usar las credenciales predeterminadas para la configuración local, (SERVER=localhost, DATABASE=db_prueba_tecnica, USERNAME=root, PASSWORD=), puedes crear el archivo .env y poner las credenciales predeterminadas DB_SERVER=localhost DB_DATABASE=db_prueba_tecnica DB_USERNAME=root
+ DB_PASSWORD=.
 
 3. **Configuración de la base de datos**
 Se debe importar el esquema de la base de datos desde el archivo SQL correspondiente.
@@ -37,7 +38,7 @@ Donde [acción] es la acción que deseas ejecutar (por ejemplo, createRow, updat
 A continuación se describen los diferentes métodos disponibles en la API, junto con ejemplos de cómo hacer las peticiones:
 
 **Buscar registros de usuario (searchRows)**
-***Método:*** GET
+***Método:*** POST
 
 ***Descripción:*** Permite buscar registros de usuarios basados en un término de búsqueda.
 
@@ -70,6 +71,7 @@ http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=searchR
     "error": null,
     "exception": null
 }
+
 **Si no hay resultados:**
 {
     "status": 0,
@@ -79,11 +81,257 @@ http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=searchR
     "exception": null
 }
 
-** **
-** **
-** **
-** **
-** **
-** **
-** **
-** **
+**Crear un nuevo usuario (createRow)**
+***Método:*** POST
+
+***Descripción:*** Crea un nuevo registro de usuario.
+
+***Parámetros de entrada:***
+
+1. nombreUsuario: Nombre del usuario.
+2. correoUsuario: Correo electrónico del usuario.
+3. claveUsuario: Clave para el usuario.
+4. telefonoUsuario: Teléfono del usuario.
+5. duiUsuario: DUI del usuario.
+6. nacimientoUsuario: Fecha de nacimiento del usuario.
+7. direccionUsuario: Dirección del usuario.
+8. confirmarClave: Confirmación de la clave.
+
+***Ejemplo de URL:***
+http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=createRow
+
+Respuesta:
+
+**Si la creación es exitosa:**
+{
+    "status": 1,
+    "message": "Usuario creado correctamente",
+    "dataset": null,
+    "error": null,
+    "exception": null
+}
+
+**Si hay errores:**
+{
+    "status": 0,
+    "message": null,
+    "dataset": null,
+    "error": "Ocurrió un problema al crear el Usuario",
+    "exception": "El correo electrónico introducido ya existe"
+}
+
+**Actualizar datos de un usuario (updateRow)**
+***Método:*** POST
+
+***Descripción:*** Actualiza un registro de usuario existente.
+
+***Parámetros de entrada:***
+
+1. idUsuario: Identificador del usuario a actualizar.
+2. nombreUsuario: Nombre del usuario.
+3. correoUsuario: Correo electrónico del usuario.
+4. telefonoUsuario: Teléfono del usuario.
+5. duiUsuario: DUI del usuario.
+6. nacimientoUsuario: Fecha de nacimiento del usuario.
+7. direccionUsuario: Dirección del usuario.
+8. estadoUsuario: Estado del usuario.
+
+***Ejemplo de URL:***
+http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=updateRow
+
+
+Respuesta:
+
+**Si la modificación es correcta:**
+{
+    "status": 1,
+    "message": "Usuario modificado correctamente",
+    "dataset": null,
+    "error": null,
+    "exception": null
+}
+
+**Si hay errores:**
+{
+    "status": 0,
+    "message": null,
+    "dataset": null,
+    "error": "Ocurrió un problema al modificar el Usuario",
+    "exception": "El DUI introducido ya existe"
+}
+
+
+**Obtener todos los usuarios (readAll)**
+***Método:*** GET
+
+***Descripción:*** Obtiene todos los usuarios registrados.
+
+***Parámetros de entrada:***
+no se requiere enviar ningún parametro
+
+***Ejemplo de URL:***
+http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=readAll
+
+***Respuesta:***
+
+**Si hay resultados:**
+{
+    "status": 1,
+    "message": "Existen 3 registros",
+    "dataset": [
+        {
+            "ID": "3",
+            "NOMBRE": "ejemplo",
+            "CORREO": "ejemplo@gmail.com",
+            "TELÉFONO": "6012-6128",
+            "DUI": "07011964-5",
+            "DIRECCIÓN": "Soyapango",
+            "NACIMIENTO": "2005-11-04",
+            "REGISTRO": "2024-11-13 23:30:26",
+            "ESTADO": "Activo",
+            "VALOR_ESTADO": "1"
+        },
+        {
+            "ID": "2",
+            "NOMBRE": "julimox",
+            "CORREO": "julimox@gmail.com",
+            "TELÉFONO": "6012-6128",
+            "DUI": "07011964-0",
+            "DIRECCIÓN": "Soyapango",
+            "NACIMIENTO": "2005-11-04",
+            "REGISTRO": "2024-11-13 21:00:29",
+            "ESTADO": "Activo",
+            "VALOR_ESTADO": "1"
+        },
+        {
+            "ID": "1",
+            "NOMBRE": "jupadi",
+            "CORREO": "pablojuanfd@gmail.com",
+            "TELÉFONO": "6012-6129",
+            "DUI": "07011964-1",
+            "DIRECCIÓN": "Mejicanos",
+            "NACIMIENTO": "2005-09-14",
+            "REGISTRO": "2024-11-13 20:56:17",
+            "ESTADO": null,
+            "VALOR_ESTADO": null
+        }
+    ],
+    "error": null,
+    "exception": null
+}
+
+**Si no hay resultados:**
+{
+    "status": 0,
+    "message": null,
+    "dataset": false,
+    "error": "No existen Usuarios registrados",
+    "exception": null
+}
+
+**Obtener un usuario por ID (readOne)**
+***Método:*** POST
+
+***Descripción:*** Obtiene los detalles de un usuario específico por su ID.
+
+***Parámetros de entrada:***
+
+idUsuario: ID del usuario a consultar.
+
+***Ejemplo de URL:***
+http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=readOne
+
+***Respuesta:***
+
+**Si hay resultados:**
+{
+    "status": 1,
+    "message": null,
+    "dataset": {
+        "ID": "3",
+        "NOMBRE": "ejemplo",
+        "CORREO": "ejemplo@gmail.com",
+        "TELÉFONO": "6012-6128",
+        "DUI": "07011964-5",
+        "DIRECCIÓN": "Soyapango",
+        "NACIMIENTO": "2005-11-04",
+        "REGISTRO": "2024-11-13 23:30:26",
+        "ESTADO": "Activo",
+        "VALOR_ESTADO": "1"
+    },
+    "error": null,
+    "exception": null
+}
+
+**Si no hay resultados:**
+{
+    "status": 0,
+    "message": null,
+    "dataset": false,
+    "error": "Usuario inexistente",
+    "exception": null
+}
+
+**Eliminar un usuario (deleteRow)**
+***Método:*** POST
+
+***Descripción:*** Elimina un usuario específico.
+
+***Parámetros de entrada:***
+
+idUsuario: ID del usuario a eliminar.
+
+***Ejemplo de URL:***
+http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=deleteRow
+
+***Respuesta:***
+
+**Si la eliminación es exitosa:**
+{
+    "status": 1,
+    "message": "Usuario eliminado correctamente",
+    "dataset": null,
+    "error": null,
+    "exception": null
+}
+
+**Si hay errores:**
+{
+    "status": 0,
+    "message": null,
+    "dataset": null,
+    "error": "Ocurrió un problema al eliminar el usuario",
+    "exception": "El usuario no existe"
+}
+
+**Cambiar estado de un usuario (changeState)**
+***Método:*** POST
+
+***Descripción:*** Cambia el estado (activo/inactivo) de un usuario.
+
+***Parámetros de entrada:***
+
+idUsuario: ID del usuario a modificar.
+
+***Ejemplo de URL:***
+http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=changeState
+
+***Respuesta:***
+
+**Si el cambio de estado es exitoso:**
+{
+    "status": 1,
+    "message": "Estado del usuario cambiado correctamente",
+    "dataset": null,
+    "error": null,
+    "exception": null
+}
+
+**Si hay errores:**
+{
+    "status": 0,
+    "message": null,
+    "dataset": null,
+    "error": "Ocurrió un problema al alterar el estado del Usuario",
+    "exception": "El usuario no existe"
+}

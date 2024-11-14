@@ -69,7 +69,7 @@ class UsuariosHandler
     //Función para actualizar un usuario.
     public function updateRow()
     {
-        $sql = 'CALL actualizar_usuario(?,?,?,?,?,?,?,?);';
+        $sql = 'CALL actualizar_usuario(?, ?, ?, ?, ?, ?, ?, ?);';
         $params = array(
             $this->id,
             $this->nombre,

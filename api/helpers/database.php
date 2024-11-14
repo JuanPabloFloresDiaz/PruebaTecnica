@@ -117,7 +117,7 @@ class Database
                 } elseif (preg_match('/Nombre de usuario ya existe/', $message)) {
                     self::$error = 'El nombre de usuario introducido ya existe';
                 } elseif (preg_match('/El usuario no existe/', $message)) {
-                    self::$error = 'El usuario que se quiere eliminar no existe';
+                    self::$error = 'El usuario no existe';
                 } elseif (preg_match('/Formato de correo electrónico no válido/', $message)){
                     self::$error = 'El formato del correo electrónico no es válido';
                 } else{
