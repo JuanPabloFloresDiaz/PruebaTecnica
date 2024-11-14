@@ -56,8 +56,8 @@ http://localhost/PruebaTecnica/api/services/usuarios/usuarios.php?action=searchR
     "dataset": [
         {
             "ID": "2",
-            "NOMBRE": "julimox",
-            "CORREO": "julimox@gmail.com",
+            "NOMBRE": "ejemplo",
+            "CORREO": "ejemplo@gmail.com",
             "TELÉFONO": "6012-6128",
             "DUI": "07011964-0",
             "DIRECCIÓN": "Soyapango",
