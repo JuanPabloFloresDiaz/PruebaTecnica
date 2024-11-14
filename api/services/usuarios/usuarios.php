@@ -19,13 +19,11 @@ const POST_BUSCAR = "search";
 if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $usuario = new UsuariosData;
-
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null);
-
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
-        // Buscar
+            // Buscar
         case 'searchRows':
             // Validación del valor de búsqueda mediante un validador.
             if (!Validator::validateSearch2($_POST[POST_BUSCAR])) {
@@ -41,7 +39,7 @@ if (isset($_GET['action'])) {
             }
             break;
 
-        // Agregar
+            // Agregar
         case 'createRow':
             // Se validan los datos del formulario de entrada.
             $_POST = Validator::validateForm($_POST);
@@ -49,6 +47,7 @@ if (isset($_GET['action'])) {
             // Se comprueba que todos los campos estén correctamente establecidos.
             if (
                 !$usuario->setNombre($_POST[POST_NOMBRE]) or
+                !$usuario->setCorreo($_POST[POST_CORREO]) or
                 !$usuario->setClave(
                     $_POST[POST_CLAVE],
                     $_POST[POST_NOMBRE],
@@ -56,7 +55,6 @@ if (isset($_GET['action'])) {
                     $_POST[POST_TELEFONO],
                     $_POST[POST_CORREO]
                 ) or
-                !$usuario->setCorreo($_POST[POST_CORREO]) or
                 !$usuario->setTelefono($_POST[POST_TELEFONO]) or
                 !$usuario->setDUI($_POST[POST_DUI]) or
                 !$usuario->setDireccion($_POST[POST_DIRECCION]) or
@@ -76,8 +74,7 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Ocurrió un problema al crear el Usuario';
             }
             break;
-
-        // Actualizar
+            // Actualizar
         case 'updateRow':
             // Se validan los datos del formulario de entrada.
             $_POST = Validator::validateForm($_POST);
@@ -103,8 +100,7 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Ocurrió un problema al modificar el Usuario';
             }
             break;
-
-        // Ver todos
+            // Ver todos
         case 'readAll':
             // Se obtienen todos los registros de usuarios.
             if ($result['dataset'] = $usuario->readAll()) {
@@ -113,11 +109,10 @@ if (isset($_GET['action'])) {
                 $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
             } else {
                 // Si no hay registros, se devuelve un mensaje de error.
-                $result['error'] = 'No existen Usuarioes registrados';
+                $result['error'] = 'No existen Usuarios registrados';
             }
             break;
-
-        // Ver uno
+            // Ver uno
         case 'readOne':
             // Se valida el ID del usuario.
             if (!$usuario->setId($_POST[POST_ID])) {
@@ -130,8 +125,7 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Usuario inexistente';
             }
             break;
-
-        // Eliminar
+            // Eliminar
         case 'deleteRow':
             // Se valida el ID del usuario a eliminar.
             if (
@@ -148,8 +142,7 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Ocurrió un problema al eliminar el Usuario';
             }
             break;
-
-        // Cambiar estado
+            // Cambiar estado
         case 'changeState':
             // Se valida el ID del usuario.
             if (
@@ -166,8 +159,7 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Ocurrió un problema al alterar el estado del Usuario';
             }
             break;
-
-        // Acción no disponible
+            // Acción no disponible
         default:
             // Si la acción no es válida, se devuelve un mensaje de error.
             $result['error'] = 'Acción no disponible';

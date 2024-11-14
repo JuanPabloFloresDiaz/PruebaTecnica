@@ -110,16 +110,18 @@ class Database
                 break;
             case '45000':
                 // Manejo de errores de validación para correo, DUI o nombre de usuario duplicado
-                if (strpos($message, 'Correo electrónico ya existe') !== false) {
+                if (preg_match('/Correo electrónico ya existe/', $message)) {
                     self::$error = 'El correo electrónico introducido ya existe';
-                } elseif (strpos($message, 'DUI ya existe') !== false) {
+                } elseif (preg_match('/DUI ya existe/', $message)) {
                     self::$error = 'El DUI introducido ya existe';
-                } elseif (strpos($message, 'Nombre de usuario ya existe') !== false) {
+                } elseif (preg_match('/Nombre de usuario ya existe/', $message)) {
                     self::$error = 'El nombre de usuario introducido ya existe';
-                } elseif (strpos($message, 'El usuario no existe') !== false) {
+                } elseif (preg_match('/El usuario no existe/', $message)) {
                     self::$error = 'El usuario que se quiere eliminar no existe';
-                } else {
+                } elseif (preg_match('/Formato de correo electrónico no válido/', $message)){
                     self::$error = 'El formato del correo electrónico no es válido';
+                } else{
+                    self::$error = 'Error con alguno de estos campos: correo, dui, nombre de usuario';
                 }
                 break;
             case '23000':

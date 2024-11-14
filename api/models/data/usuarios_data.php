@@ -102,7 +102,7 @@ class UsuariosData extends UsuariosHandler
             $this->nacimiento = $value;
             return true;
         } else {
-            $this->data_error = 'La fecha de nacimiento no es valida, debe ser mayor a' . $min . ' y menor a' . $max . ' años';
+            $this->data_error = 'La fecha de nacimiento no es valida, debe ser mayor a ' . $min . ' y menor a ' . $max . ' años';
             return false;
         }
     }

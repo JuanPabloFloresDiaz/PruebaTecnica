@@ -39,8 +39,8 @@ class UsuariosHandler
         $sql = 'CALL insertar_usuario(?, ?, ?, ?, ?, ?, ?);';
         $params = array(
             $this->nombre,
-            $this->clave,
             $this->correo,
+            $this->clave,
             $this->telefono,
             $this->dui,
             $this->direccion,
