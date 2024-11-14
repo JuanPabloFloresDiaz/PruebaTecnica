@@ -1,0 +1,14 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Ignora subir el archivo config de helpers al repositorio
+.env
+# para ignorar subir cambios de la conexión /api/helpers/config.php
+# Ignore this carpet
+.vscode
+.idea
