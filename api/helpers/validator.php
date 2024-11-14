@@ -562,12 +562,12 @@ class Validator
      *   Parámetros: $value (dato a validar).
      *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
      */
-    public static function validateDateBirthday($value)
+    public static function validateDateBirthday($value, $min, $max)
     {
         // Se dividen las partes de la fecha y se guardan en un arreglo en el siguiene orden: año, mes y día.
         $datev = strtotime($value);
-        $datem = strtotime('-18 years', time());
-        $datea = strtotime('-122 years', time());
+        $datem = strtotime('-'. $min .' years', time());
+        $datea = strtotime('-'. $max. ' years', time());
         if ($datev > $datem) {
             return false;
         } elseif ($datev < $datea) {
